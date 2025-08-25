@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="card">
+    <h2>Adaugă produs</h2>
+    <form method="post" enctype="multipart/form-data" class="grid grid-3">
+      <div class="card">
+        <label>Nume</label>
+        <input name="name" required>
+        <label>Categorie</label>
+        <select name="category">
+          <option value="piese">Piese</option>
+          <option value="detailing">Detailing</option>
+        </select>
+        <label>Preț (RON)</label>
+        <input name="price" type="number" step="0.01" value="0">
+      </div>
+      <div class="card">
+        <label>Descriere</label>
+        <textarea name="description" rows="8"></textarea>
+      </div>
+      <div class="card">
+        <label>Imagine</label>
+        <input type="file" name="image" accept="image/*">
+      </div>
+      <div style="grid-column:1/-1">
+        <button class="btn primary" type="submit">Salvează</button>
+        <a class="btn" href="{{ url_for('admin_dashboard') }}">Anulează</a>
+      </div>
+    </form>
+  </div>
+{% endblock %}

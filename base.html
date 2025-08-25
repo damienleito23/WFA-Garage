@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WFA Garage</title>
+  <meta name="description" content="WFA Garage - Diagnoză auto gama VAG, piese auto și produse de detailing.">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="icon" href="{{ url_for('static', filename='images/wfa-bg.png') }}">
+</head>
+<body>
+<div class="backdrop">
+  <div class="container">
+    <div class="navbar">
+      <div class="logo">
+        <span class="badge">WFA</span>
+        <h1>WFA Garage</h1>
+      </div>
+      <nav>
+        <a class="btn" href="{{ url_for('index') }}">Acasă</a>
+        <a class="btn" href="{{ url_for('produse') }}">Produse</a>
+        <a class="btn" href="{{ url_for('contact') }}">Contact</a>
+        <a class="btn" href="{{ url_for('admin_login') }}">Admin</a>
+      </nav>
+    </div>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for cat, msg in messages %}
+          <div class="alert {{cat}}">{{ msg }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+    <div class="footer">
+      <small class="muted">© {{ 2025 }} WFA Garage • Diagnoză auto gama VAG • Piese & Detailing</small>
+    </div>
+  </div>
+</div>
+</body>
+</html>

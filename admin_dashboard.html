@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="card">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <h2>Panou Admin</h2>
+      <div>
+        <a class="btn" href="{{ url_for('admin_add') }}">Adaugă produs</a>
+        <a class="btn" href="{{ url_for('admin_logout') }}">Logout</a>
+      </div>
+    </div>
+    {% if items %}
+    <table class="table">
+      <thead><tr><th>ID</th><th>Nume</th><th>Cat.</th><th>Preț</th><th>Imagine</th><th></th></tr></thead>
+      <tbody>
+      {% for it in items %}
+        <tr>
+          <td>{{ it.id }}</td>
+          <td>{{ it.name }}</td>
+          <td>{{ it.category }}</td>
+          <td>{{ "%.2f"|format(it.price) }}</td>
+          <td>{% if it.image_filename %}<a class="btn" target="_blank" href="{{ url_for('static', filename='uploads/' ~ it.image_filename) }}">vezi</a>{% endif %}</td>
+          <td>
+            <a class="btn" href="{{ url_for('admin_edit', pid=it.id) }}">Editează</a>
+            <form method="post" action="{{ url_for('admin_delete', pid=it.id) }}" style="display:inline" onsubmit="return confirm('Ștergi produsul?')">
+              <button class="btn danger" type="submit">Șterge</button>
+            </form>
+          </td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    {% else %}
+      <p>Nu există produse încă. Adaugă primul produs!</p>
+    {% endif %}
+  </div>
+{% endblock %}

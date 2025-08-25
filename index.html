@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+  <div class="card">
+    <h2>Diagnoză Auto — Gama VAG</h2>
+    <p>Specializați în diagnoză pentru <strong>Volkswagen, Audi, Skoda, Seat</strong>. Servicii profesionale: citire/ștergere erori, codări, adaptări, update-uri, revizii.</p>
+    <div class="grid grid-3">
+      <div class="card">
+        <h3>Servicii</h3>
+        <ul>
+          <li>Diagnoză completă OBD</li>
+          <li>Test componente live</li>
+          <li>Codări & retrofit</li>
+          <li>Resetare intervale service</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>Piese auto</h3>
+        <p>O selecție de piese noi & aftermarket pentru gama VAG.</p>
+        <a class="btn primary" href="{{ url_for('produse', cat='piese') }}">Vezi piese</a>
+      </div>
+      <div class="card">
+        <h3>Produse detailing</h3>
+        <p>Șampoane, ceramică, microfibre, accesorii.</p>
+        <a class="btn primary" href="{{ url_for('produse', cat='detailing') }}">Vezi produse</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}
